@@ -11,7 +11,8 @@
         :class="
           twMerge(
             'flex aspect-[3/4] flex-col items-center justify-center gap-0.5 rounded-lg text-center outline-[1.75px] outline-neutral-950/10',
-            isSameDay(selectedDate, day) && 'bg-blue-500 outline-blue-600',
+            isSameDay(selectedDate, day) &&
+              'bg-gradient-to-bl from-neutral-950 to-neutral-800 outline-black',
           )
         "
         @click="selectedDate = day"
@@ -29,8 +30,8 @@
         <span
           :class="
             twMerge(
-              'label-xs text-neutral-500',
-              isSameDay(selectedDate, day) && 'text-blue-50',
+              'label-sm text-neutral-500',
+              isSameDay(selectedDate, day) && 'text-neutral-300',
             )
           "
         >
