@@ -15,11 +15,11 @@
           :class="
             twMerge(
               'label-lg text-lime-500',
-              consumedMacros.carbs / goalMacros.carbs > 1 && 'text-red-500',
+              foodDiary.totalCarbs / goalMacros.carbs > 1 && 'text-red-500',
             )
           "
         >
-          {{ consumedMacros.carbs + " / " + goalMacros.carbs }}
+          {{ foodDiary.totalCarbs + "g" + " / " + goalMacros.carbs }}
         </span>
       </p>
       <p class="flex items-baseline-last justify-between gap-8 py-2">
@@ -28,11 +28,11 @@
           :class="
             twMerge(
               'label-lg text-amber-500',
-              consumedMacros.protein / goalMacros.protein > 1 && 'text-red-500',
+              foodDiary.totalProtein / goalMacros.protein > 1 && 'text-red-500',
             )
           "
         >
-          {{ consumedMacros.protein + " / " + goalMacros.protein }}
+          {{ foodDiary.totalProtein + "g" + " / " + goalMacros.protein }}
         </span>
       </p>
       <p class="flex items-baseline-last justify-between gap-8 pt-2">
@@ -41,11 +41,11 @@
           :class="
             twMerge(
               'label-lg text-sky-500',
-              consumedMacros.fat / goalMacros.fat > 1 && 'text-red-500',
+              foodDiary.totalFats / goalMacros.fat > 1 && 'text-red-500',
             )
           "
         >
-          {{ consumedMacros.fat + " / " + goalMacros.fat }}
+          {{ foodDiary.totalFats + "g" + " / " + goalMacros.fat }}
         </span>
       </p>
     </div>
@@ -55,6 +55,9 @@
 <script setup>
 import { twMerge } from "tailwind-merge";
 import VueApexCharts from "vue3-apexcharts";
+import { useFoodDiaryStore } from "@/stores/foodDiary";
+
+const foodDiary = useFoodDiaryStore();
 
 const goalMacros = reactive({
   protein: 240,
@@ -62,17 +65,17 @@ const goalMacros = reactive({
   fat: 80,
 });
 
-const consumedMacros = reactive({
-  protein: 241,
-  carbs: 160,
-  fat: 10,
-});
+// const consumedMacros = reactive({
+//   protein: ,
+//   carbs: ,
+//   fat: ,
+// });
 
 const consumedMacrosPercentae = computed(() => {
   return [
-    Math.round((consumedMacros.carbs / goalMacros.carbs) * 100),
-    Math.round((consumedMacros.protein / goalMacros.protein) * 100),
-    Math.round((consumedMacros.fat / goalMacros.fat) * 100),
+    Math.round((foodDiary.totalCarbs / goalMacros.carbs) * 100),
+    Math.round((foodDiary.totalProtein / goalMacros.protein) * 100),
+    Math.round((foodDiary.totalFats / goalMacros.fat) * 100),
   ];
 });
 

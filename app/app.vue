@@ -1,9 +1,12 @@
 <template>
-  <div class="mx-auto grid min-h-dvh max-w-xl grid-rows-[40px_1fr]">
+  <div class="mx-auto min-h-dvh max-w-xl">
     <!-- <NuxtRouteAnnouncer /> -->
-    <div aria-hidden="true" aria-label="spacer" />
     <NuxtPage class="bg-neutral-50 px-4" />
+    <TapBar />
   </div>
 </template>
 
+<script setup>
+import TapBar from "./components/TapBar.vue";
+</script>
 <style></style>

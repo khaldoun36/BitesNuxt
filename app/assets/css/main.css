@@ -146,7 +146,7 @@ body {
 
 body {
   /* background: linear-gradient(180deg, var(--color-neutral-50) 90px, white 90px); */
-  background-color: white;
+  background-color: var(--color-neutral-50);
 }
 
 button,

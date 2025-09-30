@@ -18,7 +18,7 @@
         :style="{ width: `${consumedPercentage}%` }"
       >
         <span v-show="consumedPercentage >= 15" class="label-lg text-white"
-          >{{ consumedCalories }}
+          >{{ foodDiary.totalCalories }}
         </span>
       </div>
 
@@ -37,15 +37,16 @@
 </template>
 
 <script setup>
+import { useFoodDiaryStore } from "@/stores/foodDiary";
 import { twMerge } from "tailwind-merge";
-import { ref, computed } from "vue";
+
+const foodDiary = useFoodDiaryStore();
 
 const dailyCalories = ref(2400);
-const consumedCalories = ref(2080);
 
 // Calculate the percentage of calories consumed
 const consumedPercentage = computed(() => {
   if (dailyCalories.value === 0) return 0; // Avoid division by zero
-  return (consumedCalories.value / dailyCalories.value) * 100;
+  return (foodDiary.totalCalories / dailyCalories.value) * 100;
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <header class="dates-header sticky top-0 left-0 space-y-3 pb-5.5">
+  <header class="dates-header sticky top-0 left-0 space-y-3 pt-10 pb-5.5">
     <h1 class="title-2xl text-neutral-800">
       {{ format(selectedDate, "EEE") }}
     </h1>
@@ -15,7 +15,7 @@
               'bg-gradient-to-bl from-neutral-950 to-neutral-800 outline-black',
           )
         "
-        @click="selectedDate = day"
+        @click="handleDateChange(day)"
       >
         <span
           :class="
@@ -52,14 +52,13 @@ import {
 } from "date-fns";
 
 import { twMerge } from "tailwind-merge";
+import { useFoodDiaryStore } from "@/stores/foodDiary";
 
-const { currentDate = new Date() } = defineProps({
-  currentDate: {
-    type: Date,
-  },
-});
+const foodDiary = useFoodDiaryStore();
 
-const selectedDate = ref(new Date(currentDate));
+const currentDate = new Date();
+
+const selectedDate = ref(new Date());
 
 // Get the start of the week (Monday)
 const weekStart = startOfWeek(currentDate, { weekStartsOn: 1 });
@@ -72,6 +71,11 @@ const week = eachDayOfInterval({
   start: weekStart,
   end: weekEnd,
 });
+
+const handleDateChange = (day) => {
+  selectedDate.value = day;
+  foodDiary.setSelectedDate(selectedDate.value);
+};
 </script>
 
 <style scoped>

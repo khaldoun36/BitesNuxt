@@ -1,7 +1,7 @@
 <template>
   <div>
-    <dates-header :current-date="currentDate" />
-    <section class="mt-10 space-y-4">
+    <dates-header />
+    <section class="mt-10 mb-16 space-y-4">
       <calories-card />
       <macros-card />
     </section>
@@ -12,6 +12,4 @@
 import DatesHeader from "~/components/DatesHeader.vue";
 import CaloriesCard from "~/components/CaloriesCard.vue";
 import MacrosCard from "~/components/MacrosCard.vue";
-
-const currentDate = new Date();
 </script>
