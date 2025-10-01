@@ -3,7 +3,7 @@
     <dates-header />
     <section class="mt-10 mb-16 space-y-4">
       <article
-        v-for="item in foodDiary.entriesForSelectedDate"
+        v-for="item in foodDiary.logInReverseChrono"
         :key="item.id"
         class="rounded-lg bg-white p-4 shadow-2xs outline outline-neutral-950/8"
       >

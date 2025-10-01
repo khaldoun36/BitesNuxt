@@ -8,6 +8,7 @@
       :options="chartOptions"
       :series="consumedMacrosPercentae"
     />
+
     <div class="divide-y divide-neutral-950/8">
       <p class="flex items-baseline-last justify-between gap-8 pb-2">
         <span class="label-sm text-neutral-500">Carbohydrates</span>
@@ -15,11 +16,12 @@
           :class="
             twMerge(
               'label-lg text-lime-500',
-              foodDiary.totalCarbs / goalMacros.carbs > 1 && 'text-red-500',
+              foodDiary.totalCarbs / userData.macros.carbs > 1 &&
+                'text-red-500',
             )
           "
         >
-          {{ foodDiary.totalCarbs + "g" + " / " + goalMacros.carbs }}
+          {{ foodDiary.totalCarbs + "g" + " / " + userData.macros.carbs }}
         </span>
       </p>
       <p class="flex items-baseline-last justify-between gap-8 py-2">
@@ -28,11 +30,12 @@
           :class="
             twMerge(
               'label-lg text-amber-500',
-              foodDiary.totalProtein / goalMacros.protein > 1 && 'text-red-500',
+              foodDiary.totalProtein / userData.macros.protein > 1 &&
+                'text-red-500',
             )
           "
         >
-          {{ foodDiary.totalProtein + "g" + " / " + goalMacros.protein }}
+          {{ foodDiary.totalProtein + "g" + " / " + userData.macros.protein }}
         </span>
       </p>
       <p class="flex items-baseline-last justify-between gap-8 pt-2">
@@ -41,11 +44,11 @@
           :class="
             twMerge(
               'label-lg text-sky-500',
-              foodDiary.totalFats / goalMacros.fat > 1 && 'text-red-500',
+              foodDiary.totalFats / userData.macros.fats > 1 && 'text-red-500',
             )
           "
         >
-          {{ foodDiary.totalFats + "g" + " / " + goalMacros.fat }}
+          {{ foodDiary.totalFats + "g" + " / " + userData.macros.fats }}
         </span>
       </p>
     </div>
@@ -56,26 +59,16 @@
 import { twMerge } from "tailwind-merge";
 import VueApexCharts from "vue3-apexcharts";
 import { useFoodDiaryStore } from "@/stores/foodDiary";
+import { useUserDataStore } from "@/stores/userData";
 
 const foodDiary = useFoodDiaryStore();
-
-const goalMacros = reactive({
-  protein: 240,
-  carbs: 360,
-  fat: 80,
-});
-
-// const consumedMacros = reactive({
-//   protein: ,
-//   carbs: ,
-//   fat: ,
-// });
+const userData = useUserDataStore();
 
 const consumedMacrosPercentae = computed(() => {
   return [
-    Math.round((foodDiary.totalCarbs / goalMacros.carbs) * 100),
-    Math.round((foodDiary.totalProtein / goalMacros.protein) * 100),
-    Math.round((foodDiary.totalFats / goalMacros.fat) * 100),
+    Math.round((foodDiary.totalCarbs / userData.macros.carbs) * 100),
+    Math.round((foodDiary.totalProtein / userData.macros.protein) * 100),
+    Math.round((foodDiary.totalFats / userData.macros.fats) * 100),
   ];
 });
 

@@ -29,7 +29,7 @@ export const useFoodDiaryStore = defineStore("foodDiary", {
 
     return {
       // Default selectedDate to the start of today (Sep 30, 2025)
-      selectedDate: new Date("2025-09-30").setHours(0, 0, 0, 0),
+      selectedDate: new Date().setHours(0, 0, 0, 0),
       foodLog: [
         // --- September 29, 2025 (Yesterday) ---
         {

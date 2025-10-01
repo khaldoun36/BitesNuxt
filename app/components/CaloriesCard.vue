@@ -30,7 +30,7 @@
           )
         "
       >
-        {{ dailyCalories }}
+        {{ userData.goalCalories }}
       </p>
     </div>
   </article>
@@ -38,15 +38,15 @@
 
 <script setup>
 import { useFoodDiaryStore } from "@/stores/foodDiary";
+import { useUserDataStore } from "@/stores/userData";
 import { twMerge } from "tailwind-merge";
 
 const foodDiary = useFoodDiaryStore();
-
-const dailyCalories = ref(2400);
+const userData = useUserDataStore();
 
 // Calculate the percentage of calories consumed
 const consumedPercentage = computed(() => {
-  if (dailyCalories.value === 0) return 0; // Avoid division by zero
-  return (foodDiary.totalCalories / dailyCalories.value) * 100;
+  if (userData.goalCalories === 0) return 0; // Avoid division by zero
+  return (foodDiary.totalCalories / userData.goalCalories) * 100;
 });
 </script>
