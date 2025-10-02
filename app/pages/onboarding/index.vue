@@ -1,5 +1,5 @@
 <template>
-  <form class="space-y-6 overflow-y-auto py-10" @submit="onSubmit">
+  <form class="space-y-6 overflow-y-auto px-4 py-10" @submit="onSubmit">
     <form-input
       id="current-weight"
       v-model="currentWeight"
