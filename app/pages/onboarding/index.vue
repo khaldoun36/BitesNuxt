@@ -109,7 +109,7 @@ const { handleSubmit } = useForm({
     currentWeight: userDataStore.currentWeight,
     goalWeight: userDataStore.goalWeight,
     height: userDataStore.height,
-    age: useUserDataStore.age,
+    age: userDataStore.age, // <-- Corrected line
     gender: userDataStore.gender,
     activityLevel: userDataStore.activityLevel,
   },
