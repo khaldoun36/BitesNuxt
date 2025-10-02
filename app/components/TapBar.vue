@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed right-4 bottom-px left-4 grid grid-cols-[1fr_auto] place-items-center gap-6"
+    class="fixed right-4 bottom-4 left-4 grid grid-cols-[1fr_auto] place-items-center gap-6"
   >
     <div
       class="grid min-w-full grid-cols-3 place-items-center gap-2 rounded-4xl p-1 outline outline-neutral-950/8 backdrop-blur"

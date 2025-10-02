@@ -1,7 +1,7 @@
 <template>
   <div>
     <dates-header />
-    <section class="mt-10 mb-16 space-y-4">
+    <section class="space-y-4 pt-10 pb-20">
       <calories-card />
       <macros-card />
     </section>
