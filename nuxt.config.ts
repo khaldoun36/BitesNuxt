@@ -1,6 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
   compatibilityDate: "2025-07-15",
@@ -15,31 +14,33 @@ export default defineNuxtConfig({
   ],
 
   pwa: {
+    registerType: "autoUpdate",
+    includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
+    manifestFilename: "manifest.webmanifest",
     manifest: {
-      name: "My Awesome Nuxt App",
-      short_name: "NuxtApp",
+      name: "fitness app v0",
+      short_name: "GritDXB",
       description: "A description of my awesome Nuxt app.",
-      theme_color: "#ffffff", // Your app's theme color
+      theme_color: "#ffffff",
+      background_color: "#ffffff",
+      display: "standalone",
+      start_url: "/",
+      scope: "/",
       icons: [
         {
-          src: "pwa-192x192.png", // path to icon in public dir
+          src: "/pwa-192x192.png",
           sizes: "192x192",
           type: "image/png",
         },
-        // {
-        //   src: 'pwa-512x512.png', // path to icon in public dir
-        //   sizes: '512x512',
-        //   type: 'image/png',
-        // },
+        {
+          src: "/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
       ],
     },
-    workbox: {
-      navigateFallback: "/",
-      // This will automatically generate a service worker that caches all your assets.
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-    },
     devOptions: {
-      enabled: true, // Enable PWA functionality in development
+      enabled: true,
       type: "module",
     },
   },
@@ -54,7 +55,6 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  // application head
   app: {
     head: {
       meta: [
