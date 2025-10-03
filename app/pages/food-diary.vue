@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="max-h-dvh">
     <dates-header />
-    <section class="mt-10 mb-16 space-y-4">
+    <section class="mt-10 mb-16 space-y-4 overflow-y-auto">
       <article
         v-for="item in foodDiary.logInReverseChrono"
         :key="item.id"
