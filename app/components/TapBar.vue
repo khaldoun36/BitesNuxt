@@ -25,6 +25,7 @@
       </NuxtLink>
     </div>
     <NuxtLink
+      to="/new-food"
       class="xp2 label-lg grid aspect-square h-14 w-full place-content-center rounded-4xl bg-blue-500/70 p-4 py-1 text-white outline outline-blue-600 backdrop-blur-lg"
     >
       <Icon name="ph:plus" size="24px" />
